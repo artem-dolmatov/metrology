@@ -1,11 +1,11 @@
 <template>
   <section class="container-fluid">
-    <header-contact/>   
+    <header-contact/>
     <navbar/>
     <header-banner/>
     <calculate-date/>
     <license/>
-    <footer-page/>   
+    <footer-page/>
   </section>
 </template>
 
@@ -28,3 +28,12 @@ export default {
   }
 }
 </script>
+
+<style>
+  @media (max-width: 425px) {
+    .container-fluid {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+  }
+</style>

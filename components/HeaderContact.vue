@@ -1,8 +1,8 @@
 <template>
   <b-row class="wrap">
-    <b-col>
+    <b-col cols='12' md='7' lg='5'>
       <span class="logo_img">
-        <img src="~assets/logo.png" alt="МЦСМ">
+        <img class="img-width" src="~assets/logo.png" alt="МЦСМ">
       </span>
       <span class="logo_text">
         Поверка счетчиков воды
@@ -10,12 +10,12 @@
         в Тюмени без снятия
       </span>
     </b-col>
-    <b-col>
+    <b-col class="contact-name" lg='3'>
       <div class="_title">
         <span>Межрегиональный центр <br/> стандартизации и метрологии</span>
       </div>
     </b-col>
-    <b-col>
+    <b-col class="contact-block" cols='12' md='5' lg='4'>
       <div class="time">
         <a href="tel:83452388589" class="tel">8 (3452) 38-85-89</a>
         с 9.00 до 21.00 без выходных!
@@ -157,5 +157,36 @@ export default {
 .modal-footer {
   display: block;
   text-align: center;
+}
+.img-width {
+  width: 100%;
+}
+@media (max-width: 1024px) {
+  .tel {
+
+  }
+}
+@media (max-width: 768px) {
+  .contact-name {
+    display: none;
+  }
+  .logo_text {
+    font-size: 0.99em;
+  }
+}
+@media (max-width: 425px) {
+  .contact-block {
+    text-align: center;
+  }
+}
+@media (max-width: 375px) {
+  .logo_img {
+    width: 7rem;
+  }
+}
+@media (max-width: 320px) {
+  .logo_img {
+    width: 4rem;
+  }
 }
 </style>

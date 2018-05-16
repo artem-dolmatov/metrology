@@ -9,7 +9,7 @@
                 <b-form-group label="Тип прибора:">
                   <b-form-radio-group id="date_radio" v-model="selected" :options="options" name="dateRadio"/>
                 </b-form-group>
-                <b-form-group description="Выберите дату" label="Дата установки или последней поверки счетчика:">
+                <b-form-group class="calculate-group" description="Выберите дату" label="Дата установки или последней поверки счетчика:">
                   <b-form-input
                     class="input-date"
                     max="2027-04-20"
@@ -39,7 +39,7 @@
               </b-form>
                 <b-modal id="modal-calculate" size="lg" title="Расчет выполнен" centered>
                   <b-row v-bind:class="{ hidden: activeOrders }">
-                    <b-col cols="5">
+                    <b-col cols="12" lg='5'>
                       <div id='next-verificationDate'>
                         <p class="card-text">Следующая поверка вашего счетчика: </p>
                         <p class="card-text">{{ body.verificationDate }} <span class="grey">(осталось дней: {{ day }})</span> </p>
@@ -48,9 +48,9 @@
                         <p class="card-text">Вы пропустили поверку прибора. Срочно обратитесь к нам для ее проведения</p>
                       </div>
                     </b-col>
-                    <b-col cols="7">
+                    <b-col cols="12" lg='7'>
                       <b-form method="post" v-on:submit.prevent="postCalculate">
-                        <b-form-group label="Введите номер:" description="Уведомление о сроке поверки бесплатно для всех лиц.">
+                        <b-form-group class="modal-calculate-group" label="Введите номер:" description="Уведомление о сроке поверки бесплатно для всех лиц.">
                           <b-form-input
                             class="input-check"
                             type="text"
@@ -165,14 +165,6 @@ export default {
 .grey {
   color: grey;
 }
-.input-date {
-  width: 70%;
-  float: left;
-}
-.input-check {
-  width: 62%;
-  float: left;
-}
 .btn-check {
   margin-left: 1rem;
 }
@@ -180,5 +172,30 @@ export default {
   border-bottom: 2px solid;
   padding-bottom: 0.5rem;
   text-align: center;
+}
+@media (min-width: 768px) {
+  .input-date {
+    width: 70%;
+    float: left;
+  }
+  .input-check {
+    width: 62%;
+    float: left;
+  }
+}
+@media (max-width: 767px) {
+  .order-shadow {
+    margin: 0;
+  }
+  .calculate-group {
+    text-align: center;
+  }
+  .modal-calculate-group {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .btn-check {
+    margin-top: 1rem;
+  }
 }
 </style>

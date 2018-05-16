@@ -2,11 +2,11 @@
   <div>
     <h1 class="license_title">Наши документы</h1>
     <b-row class="row_padding">
-      <b-col>
+      <b-col order="2" order-lg="1" cols='12' lg='4' class="center">
         <h4 class="title_doc">Приказ об аккредитации</h4>
         <img class="img_width" src="~assets/prikaz.jpg" alt="Приказ об аккредитации">
       </b-col>
-      <b-col>
+      <b-col order="1" order-lg="2" cols='12' lg='4' class="center">
         <div>
           <img class="rosacred" src="~assets/rosakreditacia.png" alt="Россакредитация">
           <p>Представленная нами информация отражена в реестре аккредитованных лиц в области обеспечения единства измерений на сайте
@@ -16,7 +16,7 @@
         <h4 class="title_doc">Аттестат аккредитации</h4>
         <img class="img_width" src="~assets/attestat.jpg" alt="Аттестат аккредитации">
       </b-col>
-      <b-col>
+      <b-col order="3" order-lg="3" cols='12' lg='4' class="center">
         <h4 class="title_doc">Свидетельство о поверке</h4>
         <img class="img_width" src="~assets/certificate.jpg" alt="Свидетельство о поверке">
       </b-col>
@@ -44,5 +44,12 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+.center {
+  text-align: center;
+}
+@media (max-width: 960px) {
+  .title_doc {
+    padding-top: 1rem;
+  }
+}
 </style>
-
