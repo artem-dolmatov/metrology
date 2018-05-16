@@ -23,24 +23,24 @@
       <b-button v-b-modal.modal-contact class="callback_btn btn_cube" variant="warning">Заказать звонок</b-button>
       <b-modal id="modal-contact" centered title="Заказать звонок">
         <b-form v-bind:class="{ hidden: active }" method="post" v-on:submit.prevent="postCall">
-          <b-form-group 
-            label="Номер телефона" 
+          <b-form-group
+            label="Номер телефона"
             description="Например: 8 (999) 999-99-99">
-            <b-form-input 
-              type="text" 
-              name="name" 
-              v-model="body.phone" 
-              v-mask="'# (###) ###-##-##'" 
-              :masked="masked" 
+            <b-form-input
+              type="text"
+              name="name"
+              v-model="body.phone"
+              v-mask="'# (###) ###-##-##'"
+              :masked="masked"
               placeholder="Введите номер"
-              pattern=".{17}"              
+              pattern=".{17}"
               required/>
           </b-form-group>
           <div class="center">
             <b-button
               id="btn_call"
-              type="submit" 
-              class="btn_cube btn_md" 
+              type="submit"
+              class="btn_cube btn_md"
               variant="warning">
               Отправить
               </b-button>
@@ -51,9 +51,9 @@
           <p class="ok_manage">Менеджер свяжеться с Вами в течении 5 минут</p>
         </div>
         <div slot="modal-footer">
-          <p style="color:red">{{errors}}</p> 
+          <p style="color:red">{{errors}}</p>
         </div>
-      </b-modal>              
+      </b-modal>
     </b-col>
   </b-row>
 </template>
@@ -79,7 +79,7 @@ export default {
     postCall() {
       document.getElementById('btn_call').disabled = true;
       document.getElementById('btn_call').innerHTML = 'Подождите...';
-      axios.post('http://localhost:3331/call', this.body, {
+      axios.post('http://88.212.253.194:3010/call', this.body, {
       })
       .then(response => {
         this.active=true;
@@ -90,7 +90,7 @@ export default {
       })
       .catch(error => {
         this.errors= 'Произошла ошибка, попробуйте еще раз';
-        document.getElementById('btn_call').innerHTML = 'Отправить';     
+        document.getElementById('btn_call').innerHTML = 'Отправить';
         document.getElementById('btn_call').disabled = false;
       })
     }

@@ -15,25 +15,25 @@
         <b-form v-bind:class="{ hidden: active }" method="post" v-on:submit.prevent="postCheck">
           <b-form-group label="Имя" description="Например: Иван">
             <b-form-input id="name" v-model="body.name" type="text" placeholder="Введите имя" required/>
-          </b-form-group>  
+          </b-form-group>
           <b-form-group label="Какое количество счетчиков нужно поверить?">
             <b-form-radio-group type="radio" v-model="body.counter" id="radios" name="radioCounter" :options="options" required/>
           </b-form-group>
           <b-form-group label="Номер телефона" description="Например: 8 (999) 999-99-99">
-            <b-form-input 
-              id="phone" 
-              type="text" 
-              v-model="body.phone" 
-              v-mask="'# (###) ###-##-##'" 
+            <b-form-input
+              id="phone"
+              type="text"
+              v-model="body.phone"
+              v-mask="'# (###) ###-##-##'"
               placeholder="Например: 8 (932) 111-23-44"
-              pattern=".{17}" 
+              pattern=".{17}"
               required/>
           </b-form-group>
           <div class="center">
-            <b-button 
-              id="btn_order" 
-              type="submit" 
-              class="btn_cube btn_md" 
+            <b-button
+              id="btn_order"
+              type="submit"
+              class="btn_cube btn_md"
               variant="warning">Заказать</b-button>
           </div>
         </b-form>
@@ -42,7 +42,7 @@
           <p class="ok_manage">Менеджер свяжеться с Вами в течении 5 минут</p>
         </div>
         <div slot="modal-footer">
-          <p style="color:red">{{errors}}</p> 
+          <p style="color:red">{{errors}}</p>
         </div>
       </b-modal>
     </div>
@@ -78,8 +78,8 @@ export default {
   methods: {
     postCheck() {
       document.getElementById('btn_order').disabled = true;
-      document.getElementById('btn_order').innerHTML = 'Подождите...';    
-      axios.post('http://localhost:3331/check', this.body, {
+      document.getElementById('btn_order').innerHTML = 'Подождите...';
+      axios.post('http://88.212.253.194:3010/check', this.body, {
       })
       .then(response => {
         this.active=true,
@@ -160,4 +160,3 @@ export default {
     text-align: center;
   }
 </style>
-
