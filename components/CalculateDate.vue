@@ -10,10 +10,10 @@
                   <b-form-radio-group id="date_radio" v-model="selected" :options="options" name="dateRadio"/>
                 </b-form-group>
                 <b-form-group description="Выберите дату" label="Дата установки или последней поверки счетчика:">
-                  <b-form-input 
+                  <b-form-input
                     class="input-date"
                     max="2027-04-20"
-                    type="date" 
+                    type="date"
                     name="dateChange"
                     @change="inputDateCheck"
                     required
@@ -25,7 +25,7 @@
                   disabled
                   >
                     Выберите дату
-                  </b-button>  
+                  </b-button>
                   <b-button
                     id="btn_date"
                     type="button"
@@ -40,38 +40,43 @@
                 <b-modal id="modal-calculate" size="lg" title="Расчет выполнен" centered>
                   <b-row v-bind:class="{ hidden: activeOrders }">
                     <b-col cols="5">
-                      <p class="card-text">Следующая поверка вашего счетчика: </p>
-                      <p class="card-text">{{ body.verificationDate }} <span class="grey">(осталось дней: {{ day }})</span> </p>
+                      <div id='next-verificationDate'>
+                        <p class="card-text">Следующая поверка вашего счетчика: </p>
+                        <p class="card-text">{{ body.verificationDate }} <span class="grey">(осталось дней: {{ day }})</span> </p>
+                      </div>
+                      <div id='delay' hidden>
+                        <p class="card-text">Вы пропустили поверку прибора. Срочно обратитесь к нам для ее проведения</p>
+                      </div>
                     </b-col>
                     <b-col cols="7">
                       <b-form method="post" v-on:submit.prevent="postCalculate">
                         <b-form-group label="Введите номер:" description="Уведомление о сроке поверки бесплатно для всех лиц.">
                           <b-form-input
                             class="input-check"
-                            type="text" 
-                            name="name" 
-                            v-model="body.phone" 
-                            v-mask="'# (###) ###-##-##'" 
+                            type="text"
+                            name="name"
+                            v-model="body.phone"
+                            v-mask="'# (###) ###-##-##'"
                             placeholder="Например: 8 (999) 999-99-99"
-                            pattern=".{17}"              
+                            pattern=".{17}"
                             required
-                          />                            
+                          />
                           <b-button
                             id="btn_calculate"
-                            type="submit" 
-                            class="btn_cube btn_md btn-check" 
+                            type="submit"
+                            class="btn_cube btn_md btn-check"
                             variant="warning">
                             Отправить
                           </b-button>
                         </b-form-group>
                       </b-form>
                     </b-col>
-                  </b-row>                  
+                  </b-row>
                   <div class="ok" v-bind:class="{ hidden: hiddenOrders }">
                     <p class="ok_order"> Спасибо! Ваша Заявка принята</p>
                   </div>
                   <div slot="modal-footer">
-                    <p style="color:red">{{errors}}</p> 
+                    <p style="color:red">{{errors}}</p>
                   </div>
                 </b-modal>
             </b-col>
@@ -117,14 +122,18 @@ export default {
       var dateSubstract = moment(checkDate).subtract('days', 1);
       var dateAdd = moment(dateSubstract).add('years', year);
       this.body.verificationDate = moment(dateAdd).calendar();
-      
+
       var duration = moment.duration(dateAdd.diff(nowDate));
       this.day = Math.round(duration.asDays());
+      if ( this.day <= 0) {
+        document.getElementById('delay').removeAttribute("hidden");
+        document.getElementById('next-verificationDate').setAttribute("hidden", "hidden");
+      } else {}
     },
     postCalculate() {
       document.getElementById('btn_calculate').disabled = true;
       document.getElementById('btn_calculate').innerHTML = 'Подождите...';
-      axios.post('http://localhost:3331/calculate', this.body, {  
+      axios.post('http://localhost:3331/calculate', this.body, {
       })
       .then(response => {
         this.activeOrders=true,
@@ -135,7 +144,7 @@ export default {
       })
       .catch(error => {
         this.errors= 'Произошла ошибка, попробуйте еще раз',
-        document.getElementById('btn_calculate').innerHTML = 'Отправить';     
+        document.getElementById('btn_calculate').innerHTML = 'Отправить';
         document.getElementById('btn_calculate').disabled = false;
       })
     },
@@ -173,5 +182,3 @@ export default {
   text-align: center;
 }
 </style>
-
-
