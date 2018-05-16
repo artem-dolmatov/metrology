@@ -79,7 +79,7 @@ export default {
     postCheck() {
       document.getElementById('btn_order').disabled = true;
       document.getElementById('btn_order').innerHTML = 'Подождите...';
-      axios.post('http://88.212.253.194:3010/check', this.body, {
+      axios.post('http://88.212.253.194:3041/check', this.body, {
       })
       .then(response => {
         this.active=true,

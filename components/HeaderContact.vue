@@ -79,7 +79,7 @@ export default {
     postCall() {
       document.getElementById('btn_call').disabled = true;
       document.getElementById('btn_call').innerHTML = 'Подождите...';
-      axios.post('http://88.212.253.194:3010/call', this.body, {
+      axios.post('http://88.212.253.194:3041/call', this.body, {
       })
       .then(response => {
         this.active=true;

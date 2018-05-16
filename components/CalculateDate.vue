@@ -133,7 +133,7 @@ export default {
     postCalculate() {
       document.getElementById('btn_calculate').disabled = true;
       document.getElementById('btn_calculate').innerHTML = 'Подождите...';
-      axios.post('http://88.212.253.194:3010/calculate', this.body, {
+      axios.post('http://88.212.253.194:3041/calculate', this.body, {
       })
       .then(response => {
         this.activeOrders=true,
