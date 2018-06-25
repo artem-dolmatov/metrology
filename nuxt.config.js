@@ -23,11 +23,7 @@ module.exports = {
       {
         id: '49362667',
         webvisor: true,
-        // clickmap:true,
-        // useCDN:false,
-        // trackLinks:true,
-        // accurateTrackBounce:true,
-      }
+      },
   ],
   /*
   ** Build configuration
