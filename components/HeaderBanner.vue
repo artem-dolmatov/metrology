@@ -17,7 +17,7 @@
             используя
             <b>аттестованные эталоны</b>
           </div>
-          <b-button v-b-modal.modal-order class="btn_cube btn_lg" variant="warning">Заказать</b-button>
+          <b-button v-b-modal.modal-order class="btn_cube btn_lg mobil" variant="warning">Заказать</b-button>
           <b-modal id="modal-order" centered title="Заказать поверку">
             <b-form v-bind:class="{ hidden: active }" method="post" v-on:submit.prevent="postCheck">
               <b-form-group label="Имя" description="Например: Иван">
@@ -188,10 +188,16 @@ export default {
       line-height: 1.5;
       margin-top: 1rem;
     }
+    .banner {
+      height: auto;
+    }
+    .mobil {
+      margin-bottom: 3rem;
+    }
   }
   @media (max-width: 425px) {
     .baner-padding {
-      padding-top: 5rem;
+      padding-top: 3rem;
     }
     .btn_cube {
       margin-top: 1rem;

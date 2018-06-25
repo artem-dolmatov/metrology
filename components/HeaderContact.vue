@@ -1,6 +1,6 @@
 <template>
-  <b-row class="wrap">
-    <b-col cols='12' md='7' lg='5'>
+  <b-row class="wrap wrap_m">
+    <b-col cols='12' md='1' lg='5'>
       <span class="logo_img">
         <img class="img-width" src="~assets/logo.png" alt="МЦСМ">
       </span>
@@ -10,17 +10,17 @@
         в Тюмени без снятия
       </span>
     </b-col>
-    <b-col class="contact-name" lg='3'>
+    <b-col class="contact-name" lg='3' md='4'>
       <div class="_title">
         <span>Межрегиональный центр <br/> стандартизации и метрологии</span>
       </div>
     </b-col>
-    <b-col class="contact-block" cols='12' md='5' lg='4'>
+    <b-col class="contact-block" cols='12' md='7' lg='4'>
       <div class="time">
         <a href="tel:83452388589" class="tel">8 (3452) 38-85-89</a>
         с 9.00 до 21.00 без выходных!
       </div>
-      <b-button v-b-modal.modal-contact class="callback_btn btn_cube" variant="warning">Заказать звонок</b-button>
+      <b-button v-b-modal.modal-contact class="callback_btn btn_cube" variant="warning">Перезвоните мне</b-button>
       <b-modal id="modal-contact" centered title="Заказать звонок">
         <b-form v-bind:class="{ hidden: active }" method="post" v-on:submit.prevent="postCall">
           <b-form-group
@@ -161,9 +161,12 @@ export default {
 .img-width {
   width: 100%;
 }
-@media (max-width: 1024px) {
-  .tel {
-
+@media (max-width: 823px) {
+  .logo_text {
+    display: none;
+  }
+  .logo_img {
+    display: none;
   }
 }
 @media (max-width: 768px) {
@@ -171,12 +174,21 @@ export default {
     display: none;
   }
   .logo_text {
-    font-size: 0.99em;
+    display: none;
+  }
+  .logo_img {
+    display: none;
+  }
+  .contact-block {
+    text-align: center;
   }
 }
 @media (max-width: 425px) {
   .contact-block {
     text-align: center;
+  }
+  .wrap_m {
+    padding: 1rem;
   }
 }
 @media (max-width: 375px) {
