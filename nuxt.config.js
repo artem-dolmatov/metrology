@@ -23,7 +23,7 @@ module.exports = {
       {
         id: '49362667',
         webvisor: true,
-      },
+      }
   ],
   /*
   ** Build configuration
