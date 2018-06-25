@@ -19,11 +19,17 @@ module.exports = {
   loading: { color: '#3B8070' },
   modules: [
     'bootstrap-vue/nuxt',
-    '@nuxtjs/yandex-metrika',
+    [
+      '@nuxtjs/yandex-metrika',
       {
         id: '49362667',
         webvisor: true,
+        // clickmap:true,
+        // useCDN:false,
+        // trackLinks:true,
+        // accurateTrackBounce:true,
       }
+    ],
   ],
   /*
   ** Build configuration
